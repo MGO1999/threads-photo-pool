@@ -10,7 +10,7 @@ import sys
 import urllib.parse
 import urllib.request
 
-token = os.environ.get("THREADS_ACCESS_TOKEN")
+token = (os.environ.get("THREADS_ACCESS_TOKEN") or "").strip().strip("\"'")
 if not token:
     sys.exit("THREADS_ACCESS_TOKEN must be set")
 

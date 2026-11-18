@@ -95,7 +95,7 @@ def publish(post, token, repo):
 
 
 def main():
-    token = os.environ.get("THREADS_ACCESS_TOKEN")
+    token = (os.environ.get("THREADS_ACCESS_TOKEN") or "").strip().strip("\"'")
     repo = os.environ.get("GITHUB_REPOSITORY")
     if not token or not repo:
         sys.exit("THREADS_ACCESS_TOKEN and GITHUB_REPOSITORY must be set")
