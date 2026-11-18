@@ -17,11 +17,12 @@ A pool of photos plus a scheduler that posts them to Threads.
   "publish_at": "2026-11-20T19:00:00+01:00",
   "theme": "Late light on whitewashed walls",
   "caption": "Short caption",
+  "topic_tag": "Photographers of Threads",
   "images": ["photos/IMG_0001.jpg", "photos/IMG_0002.jpg"]
 }
 ```
 
-One image makes a single post. Two to ten images make a carousel.
+`topic_tag` is optional, one per post (no periods or ampersands). One image makes a single post. Two to ten images make a carousel.
 
 ## Setup
 

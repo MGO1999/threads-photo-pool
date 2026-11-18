@@ -5,6 +5,7 @@ Each file in queue/ is a JSON post:
   "publish_at": "2026-11-20T19:00:00+01:00",
   "theme": "Late light on whitewashed walls",
   "caption": "Short caption here",
+  "topic_tag": "Photographers of Threads",
   "images": ["photos/IMG_0001.jpg", "photos/IMG_0002.jpg"]
 }
 
@@ -61,6 +62,7 @@ def wait_ready(container_id, token):
 def publish(post, token, repo):
     images = post["images"]
     caption = post.get("caption", "")
+    tag = {"topic_tag": post["topic_tag"]} if post.get("topic_tag") else {}
     if not 1 <= len(images) <= 10:
         raise ValueError("A post needs between 1 and 10 images")
 
@@ -69,6 +71,7 @@ def publish(post, token, repo):
             "media_type": "IMAGE",
             "image_url": image_url(repo, images[0]),
             "text": caption,
+            **tag,
             "access_token": token,
         })["id"]
     else:
@@ -86,6 +89,7 @@ def publish(post, token, repo):
             "media_type": "CAROUSEL",
             "children": ",".join(children),
             "text": caption,
+            **tag,
             "access_token": token,
         })["id"]
 
@@ -131,6 +135,7 @@ def main():
             "file": f.name,
             "theme": post.get("theme", ""),
             "caption": post.get("caption", ""),
+            "topic_tag": post.get("topic_tag", ""),
             "images": post["images"],
             "threads_id": post_id,
             "published_at": now.isoformat(),
