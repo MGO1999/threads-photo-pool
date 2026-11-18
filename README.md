@@ -29,5 +29,6 @@ One image makes a single post. Two to ten images make a carousel.
    (Settings, Secrets and variables, Actions).
 2. Run "Publish due posts" once from the Actions tab to test.
 
-The token lasts 60 days. "Refresh Threads token" extends it every Monday and
-fails loudly if it ever needs replacing.
+The token lasts 60 days. "Check Threads token" tests it every Monday and fails
+(GitHub emails you) once it stops working. Then generate a new one in the Meta
+app and update the secret.
